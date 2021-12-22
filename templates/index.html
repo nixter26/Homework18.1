@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database web app</title>
+</head>
+<body>
+
+<h1>Simple database app</h1>
+
+<form method="post" action="/add-message">
+
+    <input type="text" name="username" placeholder="Enter your name">
+    <br>
+    <br>
+
+    <textarea name="text" placeholder="Enter your message"></textarea>
+    <br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<hr>
+
+<h2>Messages:</h2>
+
+{% for x in messages.items %}
+
+<p><strong>{{ x.author }}:</strong>
+       {{ x.text }}
+</p>
+{% endfor %}
+<p>
+    {% for page_num in range(messages.pages) %}
+    <a href="/?page={{page_num+1}}"> Page {{page_num+1}}</a>
+    {% endfor %}
+
+</p>
+
+</body>
+</html>
